@@ -9,7 +9,8 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head/>
 <h:form>
-    <p:wizard>
+    <p:growl id="growl" sticky="false" showDetail="true"/>
+    <p:wizard flowListener="#{registrationBean.onFlowProcess}">
         <p:tab id="personal" title="Personal">
             <p:panel header="Personal Details">
                 <h:panelGrid columns="2" columnClasses="label, value">
@@ -29,6 +30,7 @@
                     <p:inputText Label="Suburb"/>
                 </h:panelGrid>
             </p:panel>
+            <p:commandButton value="Submit" actionListener="#{registrationBean.save}" update="growl" process="@this"/>
         </p:tab>
     </p:wizard>
 </h:form>
